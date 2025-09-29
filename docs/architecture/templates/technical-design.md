@@ -3,8 +3,8 @@
 > Document structure and reading guide:
 >
 > - Chapters 1–3: Business Context & Requirements
-> - Chapters 4–7: Architecture & Security
-> - Chapters 8–10: Delivery & Operations
+> - Chapters 4–6: Architecture & Security
+> - Chapters 7–10: Delivery & Operations
 >
 > For every chapter and sub-chapter starting from chapter 4, apply an
 > **“If Applicable”** policy. If a chapter or sub-chapter is not applicable,
@@ -43,7 +43,7 @@
 > - **Stakeholders:** Business owner, data owner, CISO, DPO, Operations,
 > Architecture Board.
 > - **Scope (in/out):** Domains, processes, systems.
-> - **Assumptions & constraints:** Cloud choices, budget, timeline, vendors,
+> - **Assumptions:** Cloud choices, budget, timeline, vendors,
 > policies/standards.
 
 ## 3. Goals & Requirements
@@ -62,15 +62,14 @@
 > - ID
 > - Description
 > - Priority (MoSCoW)
-> - KPI
 > - Acceptance criteria
 >
 > *Example:*
 >
-> | ID     | Requirement                                      | KPI          | Acceptance Criteria                                                                                                                                                 |
+> | ID     | Requirement                                      | Priority          | Acceptance Criteria                                                                                                                                                 |
 > | ------ | ------------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-> | FR-001 | Citizens can submit and track requests online    | >95% success | Tracking ID returned within 5s; confirmation email delivered within 2m; request appears in staff queue within 60s; audit log entry (user, timestamp, IP) recorded. |
-> | FR-002 | Staff workflow with SLA timers                   | 90% on time  | SLA timer starts on case creation; visual countdown shown; warning at 80% of SLA and breach alert at 100%; SLA compliance report per team generated daily.         |
+> | FR-001 | Citizens can submit and track requests online    | Should         | Tracking ID returned within 5s; confirmation email delivered within 2m; request appears in staff queue within 60s; audit log entry (user, timestamp, IP) recorded. |
+> | FR-002 | Staff workflow with SLA timers                   | Must  | SLA timer starts on case creation; visual countdown shown; warning at 80% of SLA and breach alert at 100%; SLA compliance report per team generated daily.         |
 
 ### 3.3 Non-Functional Requirements (high level)
 
@@ -88,13 +87,13 @@
 > | NFR-003 | Scalability            | +3× peak load  | Stress test to 3× baseline; autoscale triggers within 5 min; queue backlog below defined threshold; no sustained CPU >80% for >15 min during test.          |
 > | NFR-004 | Security & Privacy     | GDPR/BIO-compliant | SAST/DAST clean (no High/Critical); penetration test with 0 High findings before go-live; DPIA approved; TLS 1.2+ enforced; TDE/SSE enabled; access reviews passed. |
 
-### 3.4 Constraints & Assumptions
+### 3.4 Constraints
 
 > Record hard/standing constraints (cloud choice, standards, licenses) and assumptions with validation point and fallback. Link each item to a risk/mitigation.
 >
 > *Example:*
 >
-> | ID      | Constraint / Assumption     | Notes                 | Risk/Mitigation                                                                 |
+> | ID      | Constraint      | Notes                 | Risk/Mitigation                                                                 |
 > | ------- | --------------------------- | --------------------- | -------------------------------------------------------------------------------- |
 > | CST-001 | Cloud: Azure only           | Organization standard | Use containerization to reduce lock-in and preserve portability where feasible.  |
 > | ASM-001 | Existing IdP: Entra ID      | MFA required          | No backup IdP defined in current cloud strategy → define failover auth plan.    |
