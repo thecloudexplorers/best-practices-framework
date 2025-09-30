@@ -6,8 +6,8 @@
   "[markdown]": {
     "editor.rulers": [
       {
-        "column": 80,
-        "color": "#5BA150"
+        "column": 100,
+        "color": "#807304"
       }
     ]
   },
@@ -52,8 +52,9 @@
   "files.associations": {
     "*.yml": "azure-pipelines"
   },
-  "cSpell.enableFiletypes": [
-    "azure-pipelines",
-    "powershell"
+  "cSpell.words": [
+    "DPIA",
+    "Entra ID",
+    "Entra"
   ]
 }
