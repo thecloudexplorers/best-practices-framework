@@ -36,12 +36,85 @@
 > Record who is involved and what they care about. Define in-scope / out-of-scope, dependencies, and
 > explicit assumptions & constraints (including how/when you will validate them). Add a short RACI
 > or owner per topic.
+
+### 2.1 Stakeholders
+
+> Identify who decides, who is accountable for data and risk, who runs the thing, and who guards
+> architecture standards. For each stakeholder, record:
 >
-> *Example:*
+> - Role & Name/Org (who)
+> - Accountability (what they own; use R/A/C/I if helpful)
+> - Key Decisions (what they must sign off)
+> - Inputs Needed (what you need from them to proceed)
+> - Stage-Gate Sign-offs (e.g., HLD approval, Security Design Review, Go-Live)
 >
-> - **Stakeholders:** Business owner, data owner, CISO, DPO, Operations, Architecture Board.
-> - **Scope (in/out):** Domains, processes, systems.
-> - **Assumptions:** Cloud choices, budget, timeline, vendors, policies/standards.
+> Keep it short. If someone can block the project (CISO, DPO, Architecture Board), they must be here.
+> Tip: DPO duties come from GDPR Article 39; the CISO typically ensures BIO alignment and signs risk
+> acceptance.
+>
+> | Role                   | Name / Organisation         | Accountability (R/A/C/I)                | Key Decisions                                             | Inputs Needed                                | Stage-Gate Sign-offs                                                       |
+> | ---------------------- | --------------------------- | --------------------------------------- | --------------------------------------------------------- | -------------------------------------------- | -------------------------------------------------------------------------- |
+> | **Business Owner**     | {Jane Doe}                  | **A** for business outcomes & budget    | Scope, funding, service KPIs                              | Business case, target KPIs, budget caps      | HLD approval, Go-Live                                                      |
+> | **Data Owner**         | {Dept Head Social Services} | **A** for lawful processing & retention | Data categories, retention, sharing                       | Data classification, DPIA inputs             | HLD data section, DPIA sign-off                                            |
+> | **CISO**               | {CISO Name}                 | **A** for information risk (BIO)        | Accept residual risks; crypto & network posture           | Threat model, controls mapping to BIO        | Security Design Review, Go-Live risk acceptance. ([Digital Government][1]) |
+
+[1]: https://www.nldigitalgovernment.nl/overview/information-security__trashed/government-information-security-baseline/?utm_source=chatgpt.com "Government information security baseline"
+
+### 2.2 Scope
+
+> Describe what is in and out by domain, processes, systems, data, and interfaces. Be explicit to
+> prevent scope creep.
+>
+> Include five subsections:
+>
+> - Domains (e.g., citizen case handling, permits)
+> - Business Processes (e.g., "Register request", "Assess", "Decide", "Notify")
+> - Systems (new and existing; Azure and non-Azure)
+> - Data & Integrations (PII categories, Digikoppeling/eHerkenning/DigiD, BRP, etc.)
+> - Environments (Dev/Test/Acc/Prod), Regions, and Tenancy (Landing Zone/subscriptions)
+>
+> **Note:** For public-sector integrations, Digikoppeling is the government standard for secure
+> inter-agency messaging; if you rely on it, say so here.
+>
+> Scope statement (one paragraph):
+> "This project delivers an Azure-hosted digital case-management workload within the municipality's
+> Landing Zone, exposing REST APIs to internal systems and consuming BRP via Digikoppeling.
+> Production runs in West Europe with North Europe as DR."
+>
+> | Category                 | In Scope                                                                                                                   | Out of Scope                                |
+> | ------------------------ | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+> | **Domains**              | Social-services case intake & tracking                                                                                     | Financial aid disbursement back-office      |
+> | **Processes**            | Intake, verification, decision, notification                                                                               | Appeals & legal objection process           |
+> | **Systems (Azure)**      | App Service (API/UI), Azure SQL, Key Vault, Application Gateway (WAF), API Management, Log Analytics, Monitor, Service Bus | AKS (no containers in v1)                   |
+> | **Systems (External)**   | BRP lookup via Digikoppeling; municipal SSO via Azure AD / DigiD broker                                                    | Legacy document archive (read-only via URL) |
+> | **Data**                 | PII: name, address, BSN (minimized), case metadata                                                                         | Scanned documents OCR (future phase)        |
+> | **Interfaces**           | REST `/api/v1/cases` (internal), SOAP (BRP via Digikoppeling)                                                              | Batch exports to data warehouse             |
+> | **Environments/Regions** | Dev/Test/Acc/Prod in West Europe; DR in North Europe                                                                       | On-prem DR                                  |
+> | **Tenancy**              | Municipality tenant; production subscription in Landing Zone                                                               | Partner tenant hosting                      |
+
+### 2.3 Assumptions
+
+> Write testable assumptions that, if wrong, change cost, time, or design. Each assumption needs:
+>
+> - Statement (clear + testable)
+> - Category (Cloud choice, Budget, Timeline, Vendor, Policy/Standard)
+> - Evidence / Source (who said it / doc link)
+> - Owner (who will validate) & Due Date
+> - Risk if false (impact)
+> - Mitigation / Plan B (what you’ll do)
+> - Status (Unverified / Verified / Falsified → becomes Risk/Issue)
+> - Align cloud/architecture assumptions with CAF and WAF so reviewers know you’re using Microsoft’s baseline guidance.
+>
+> | ID   | Assumption (testable)                                                                                            | Category        | Evidence / Source                                 | Owner            | Validate by | Risk if false                            | Mitigation / Plan B                                                    | Status                                     |
+> | ---- | ---------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------- | ---------------- | ----------- | ---------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------ |
+> | A-01 | **Azure Landing Zone (policy, RBAC, networking) is available by project start** and meets baseline CAF guidance. | Cloud choice    | EA says “ready” in kickoff; CAF landing zone docs | Platform Owner   | 2025-10-15  | Delay 4–6 weeks; rework network & policy | Stand up minimal landing zone via Bicep in proj. sub; time-box 2 weeks | Unverified. ([Microsoft Learn][1])         |
+> | A-02 | **Digikoppeling connectivity to BRP** is available with valid PKIoverheid certs and mTLS.                        | Vendor/Standard | Integration team plan; Forum Standaardisatie      | Integration Lead | 2025-10-22  | No citizen lookup; blocked UAT           | Mock BRP; switch to delayed verification workflow                      | Unverified. ([forumstandaardisatie.nl][2]) |
+> | A-03 | **DPO provides approved data classification & DPIA outcome** before dev complete.                                | Policy/GDPR     | DPO email; GDPR Art. 39 duties                    | DPO              | 2025-11-01  | Rework data model; go-live risk          | Use anonymised test data; freeze PII features                          | Unverified. ([GDPR][3])                    |
+Run one full DR + one table-top; defer RTO to 8h if needed             | Unverified                                 |
+
+[1]: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/overview?utm_source=chatgpt.com "Microsoft Cloud Adoption Framework for Azure"
+[2]: https://www.forumstandaardisatie.nl/open-standaarden/digikoppeling?utm_source=chatgpt.com "Digikoppeling"
+[3]: https://gdpr-info.eu/art-39-gdpr/?utm_source=chatgpt.com "Art. 39 GDPR – Tasks of the data protection officer"
 
 ## 3. Goals & Requirements
 
