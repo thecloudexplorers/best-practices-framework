@@ -73,13 +73,12 @@
 > - Data & Integrations (PII categories, Digikoppeling/eHerkenning/DigiD, BRP, etc.)
 > - Environments (Dev/Test/Acc/Prod), Regions, and Tenancy (Landing Zone/subscriptions)
 >
-> **Note:** For public-sector integrations, Digikoppeling is the government standard for secure
-> inter-agency messaging; if you rely on it, say so here.
->
 > Scope statement (one paragraph):
 > "This project delivers an Azure-hosted digital case-management workload within the municipality's
 > Landing Zone, exposing REST APIs to internal systems and consuming BRP via Digikoppeling.
 > Production runs in West Europe with North Europe as DR."
+>
+> *Example:*
 >
 > | Category                 | In Scope                                                                                                                   | Out of Scope                                |
 > | ------------------------ | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
@@ -104,6 +103,8 @@
 > - Mitigation / Plan B (what you’ll do)
 > - Status (Unverified / Verified / Falsified → becomes Risk/Issue)
 > - Align cloud/architecture assumptions with CAF and WAF so reviewers know you’re using Microsoft’s baseline guidance.
+>
+> *Example:*
 >
 > | ID   | Assumption (testable)                                                                                            | Category        | Evidence / Source                                 | Owner            | Validate by | Risk if false                            | Mitigation / Plan B                                                    | Status                                     |
 > | ---- | ---------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------- | ---------------- | ----------- | ---------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------ |
