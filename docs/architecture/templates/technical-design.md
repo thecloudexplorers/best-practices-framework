@@ -32,7 +32,7 @@
 > page.
 >
 
-### 3.1 Organizational Goals
+### 1.1 Organizational Goals
 
 > Define 3 to 5 **measurable** goals (OKR/KPI) with a baseline, target,
 > deadline, and measurement method. Link each goal to a business value and an
