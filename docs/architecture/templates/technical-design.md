@@ -30,6 +30,13 @@
 > Describe the purpose, scope, and expected outcomes in business terms. State value, costs/benefits,
 > key risks, and the decisions requested (go/no-go,budget, timeline). Keep this to a maximum of 1
 > page.
+>
+
+### 3.1 Organizational Goals
+
+> Define 3 to 5 **measurable** goals (OKR/KPI) with a baseline, target,
+> deadline, and measurement method. Link each goal to a business value and an
+> owner.
 
 ## 2. Stakeholders, Scope, and Assumptions
 
@@ -117,13 +124,7 @@ Run one full DR + one table-top; defer RTO to 8h if needed             | Unverif
 [2]: https://www.forumstandaardisatie.nl/open-standaarden/digikoppeling?utm_source=chatgpt.com "Digikoppeling"
 [3]: https://gdpr-info.eu/art-39-gdpr/?utm_source=chatgpt.com "Art. 39 GDPR – Tasks of the data protection officer"
 
-## 3. Goals & Requirements
-
-### 3.1 Organizational Goals
-
-> Define 3 to 5 **measurable** goals (OKR/KPI) with a baseline, target,
-> deadline, and measurement method. Link each goal to a business value and an
-> owner.
+## 3. Requirements
 
 ### 3.2 Functional Requirements (high level)
 
