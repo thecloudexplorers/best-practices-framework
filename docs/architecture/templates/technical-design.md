@@ -126,7 +126,7 @@ Run one full DR + one table-top; defer RTO to 8h if needed             | Unverif
 
 ## 3. Requirements
 
-### 3.2 Functional Requirements (high level)
+### 3.1 Functional Requirements (high level)
 
 > Describe requirements as **verifiable capabilities** or **user stories**.
 > For each requirement provide:
@@ -143,7 +143,7 @@ Run one full DR + one table-top; defer RTO to 8h if needed             | Unverif
 > | FR-001 | Citizens can submit and track requests online    | Should         | Tracking ID returned within 5s; confirmation email delivered within 2m; request appears in staff queue within 60s; audit log entry (user, timestamp, IP) recorded. |
 > | FR-002 | Staff workflow with SLA timers                   | Must  | SLA timer starts on case creation; visual countdown shown; warning at 80% of SLA and breach alert at 100%; SLA compliance report per team generated daily.         |
 
-### 3.3 Non-Functional Requirements (high level)
+### 3.2 Non-Functional Requirements (high level)
 
 > Specify **concrete, measurable** thresholds for availability, performance (P95), scalability,
 > security, privacy, accessibility, and compliance. Add the verification method (measurement/test)
@@ -158,7 +158,7 @@ Run one full DR + one table-top; defer RTO to 8h if needed             | Unverif
 > | NFR-003 | Scalability            | +3× peak load  | Stress test to 3× baseline; autoscale triggers within 5 min; queue backlog below defined threshold; no sustained CPU >80% for >15 min during test.          |
 > | NFR-004 | Security & Privacy     | GDPR/BIO-compliant | SAST/DAST clean (no High/Critical); penetration test with 0 High findings before go-live; DPIA approved; TLS 1.2+ enforced; TDE/SSE enabled; access reviews passed. |
 
-### 3.4 Constraints
+### 3.3 Constraints
 
 > Record hard/standing constraints (cloud choice, standards, licenses) and assumptions with
 > validation point and fallback. Link each item to a risk/mitigation.
