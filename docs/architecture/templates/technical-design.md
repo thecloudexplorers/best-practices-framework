@@ -74,9 +74,9 @@
 > - Environments (Dev/Test/Acc/Prod), Regions, and Tenancy (Landing Zone/subscriptions)
 >
 > Scope statement (one paragraph):
-> "This project delivers an Azure-hosted digital case-management workload within the municipality's
+> "This project delivers an Azure-hosted digital case-management workload within the organization's
 > Landing Zone, exposing REST APIs to internal systems and consuming BRP via Digikoppeling.
-> Production runs in West Europe with North Europe as DR."
+> Production runs in West Europe with North Europe as Disaster Recovery."
 >
 > *Example:*
 >
@@ -89,7 +89,7 @@
 > | **Data**                 | PII: name, address, BSN (minimized), case metadata                                                                         | Scanned documents OCR (future phase)        |
 > | **Interfaces**           | REST `/api/v1/cases` (internal), SOAP (BRP via Digikoppeling)                                                              | Batch exports to data warehouse             |
 > | **Environments/Regions** | Dev/Test/Acc/Prod in West Europe; DR in North Europe                                                                       | On-prem DR                                  |
-> | **Tenancy**              | Municipality tenant; production subscription in Landing Zone                                                               | Partner tenant hosting                      |
+> | **Tenancy**              | Organizations tenant; production subscription in Landing Zone                                                               | Partner tenant hosting                      |
 
 ### 2.3 Assumptions
 
