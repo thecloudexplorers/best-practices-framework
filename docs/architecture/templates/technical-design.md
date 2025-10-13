@@ -124,6 +124,9 @@ Run one full DR + one table-top; defer RTO to 8h if needed             | Unverif
 [2]: https://www.forumstandaardisatie.nl/open-standaarden/digikoppeling?utm_source=chatgpt.com "Digikoppeling"
 [3]: https://gdpr-info.eu/art-39-gdpr/?utm_source=chatgpt.com "Art. 39 GDPR – Tasks of the data protection officer"
 
+### 2.4 Dependencies
+
+> Describe external dependencies such as external teams, projects, external suppliers, etc.
 ## 3. Requirements
 
 ### 3.1 Functional Requirements (high level)
