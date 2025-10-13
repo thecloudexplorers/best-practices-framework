@@ -10,7 +10,7 @@
 > a chapter or sub-chapter is not applicable, list it in **Appendix 1: Not Applicable List**. After
 > listing it, the chapter or sub-chapter may be removed to improve readability.
 >
-> For all chapters starting from chapter 4,**define or reference the approach**. To maintain a
+> For all chapters starting from chapter 4, **define or reference the approach**. To maintain a
 > **single source of truth**, this template encourages referencing existing documents or processes.
 >
 > Examples:
