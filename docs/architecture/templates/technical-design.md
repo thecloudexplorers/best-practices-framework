@@ -27,8 +27,8 @@
 
 ## 1. Executive Summary
 
-> Describe the purpose, scope, and expected outcomes in business terms. State value, costs/benefits,
-> key risks, and the decisions requested (go/no-go,budget, timeline). Keep this to a maximum of 1
+> Brief description of the purpose, scope, and expected outcomes in business terms. State value, costs/benefits,
+> key risks, and the decisions requested (go/no-go, budget, timeline). Keep this to a maximum of 1
 > page.
 >
 
