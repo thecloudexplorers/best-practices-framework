@@ -1,10 +1,14 @@
 # Technical Design Document Template
 
+> This template is developed iteratively based input from architects and engineers in the field.
+> The document which comes from this template should be considered a **living document** and must be
+> maintained and kept up to date.
+>
 > Document structure and reading guide:
 >
-> - Chapters 1–3: Business Context & Requirements
-> - Chapters 4–6: Architecture & Security
-> - Chapters 7–10: Delivery & Operations
+> - Chapters 1-3: Business Context & Requirements
+> - Chapters 4-6: Architecture & Security
+> - Chapters 7-10: Delivery & Operations
 >
 > For every chapter and sub-chapter starting from chapter 4, apply an **“If Applicable”** policy. If
 > a chapter or sub-chapter is not applicable, list it in **Appendix 1: Not Applicable List**. After
